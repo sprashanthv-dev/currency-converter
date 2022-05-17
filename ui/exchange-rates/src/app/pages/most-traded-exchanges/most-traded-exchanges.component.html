@@ -5,11 +5,7 @@
         <label for="table-search" class="col-xs-3 col-sm-auto col-form-label">By Country:
         </label>
         <div class="col-xs-3 col-sm-auto">
-          <input type="text" id="table-search" class="form-control">
-        </div>
-        <div class="col-xs-6 col-sm-auto buttons">
-          <button class="btn btn-primary">Filter</button>
-          <button class="btn btn-secondary">Reset</button>
+          <input type="text" id="table-search" class="form-control" name="country_name" [(ngModel)]="countryFilter">
         </div>
       </div>
     </form>
@@ -22,24 +18,35 @@
         <th scope="col">Switch Pair</th>
       </thead>
       <tbody>
-        <tr *ngFor="let exchange of mostTradedExchanges; let ind = index">
-          <th scope="row">{{ ind + 1 }}</th>
-          <td>{{ exchange.currencyPair }}</td>
-          <td>
-            <span class="flag">
-              <img [src]=exchange.srcImageUrl alt="United States Flag">
-            </span>
-            <span class="full-form">{{ exchange.fullForm }}</span>
-            <span class="flag">
-              <img [src]=exchange.destImageUrl alt="India Flag">
-            </span>
-          </td>
-          <td>{{ exchange.liveRate }}</td>
-          <td>
-            <img src="../../../assets/switch.png" alt="Switch Icon" width="32">
-          </td>
-        </tr>
+
+        <ng-container *ngIf="!areTableRecordsEmpty; else empty_table">
+          <tr *ngFor="let exchange of mostTradedExchanges; let ind = index">
+            <th scope="row">{{ ind + 1 }}</th>
+            <td>{{ exchange.currencyPair }}</td>
+            <td>
+              <span class="flag">
+                <img [src]=exchange.srcImageUrl alt="United States Flag">
+              </span>
+              <span class="full-form">{{ exchange.fullForm }}</span>
+              <span class="flag">
+                <img [src]=exchange.destImageUrl alt="India Flag">
+              </span>
+            </td>
+            <td>{{ exchange.liveRate }}</td>
+            <td>
+              <img src="../../../assets/switch.png" alt="Switch Icon" width="32">
+            </td>
+          </tr>
+        </ng-container>
+
+        <ng-template #empty_table>
+          <td colspan="6" class="no-results">No results found</td>
+        </ng-template>
+
       </tbody>
     </table>
   </div>
+</div>
+<div class="exchange-rate">
+  <button class="btn">Get Your Rate!</button>
 </div>

@@ -13,4 +13,5 @@ header .title {
   margin: 15px auto;
   letter-spacing: 0.1rem;
   font-size: 30px;
+  color: var(--primary);
 }

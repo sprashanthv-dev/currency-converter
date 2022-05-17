@@ -1,6 +1,7 @@
 <main>
   <app-header></app-header>
-  <app-most-traded-exchanges [mostTradedExchanges]="mostTradedCurrencyPairs">
+  <app-most-traded-exchanges [mostTradedExchanges]="mostTradedCurrencyPairsFiltered"
+    (onCountryNameSearched)="handleCountryNameSearch($event)">
   </app-most-traded-exchanges>
   <app-footer></app-footer>
 </main>
