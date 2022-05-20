@@ -28,21 +28,11 @@ table th {
   vertical-align: top;
 }
 
-.exchange-rate {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.exchange-rate button {
-  font-size: 20px;
-  margin: 0px auto 20px auto;
-  width: 20%;
-  background-color: var(--primary);
-  color: var(--grey);
-}
-
 .no-results {
   letter-spacing: 0.1rem;
   color: var(--primary);
+}
+
+.switch-icon img {
+  cursor: pointer;
 }

@@ -14,4 +14,12 @@ export class UtilService {
     return value.length === 0;
   }
 
+  isNullOrUndefined(value: any): boolean {
+    return value === null || value === undefined;
+  }
+
+  isObjectNotEmpty(value: any): boolean {
+    return Object.keys(value).length > 0;
+  }
+
 }

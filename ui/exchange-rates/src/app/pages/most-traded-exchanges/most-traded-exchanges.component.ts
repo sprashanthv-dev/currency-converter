@@ -10,7 +10,9 @@ import { UtilService } from 'src/app/services/util.service';
 export class MostTradedExchangesComponent implements OnChanges {
 
   @Input() mostTradedExchanges: MostTradedExchanges[] = [];
+
   @Output() onCountryNameSearched: EventEmitter<string> = new EventEmitter<string>();
+  @Output() onCurrencyPairSwitchClicked: EventEmitter<string> = new EventEmitter<string>();
 
   areTableRecordsEmpty: boolean = false;
 
@@ -29,6 +31,10 @@ export class MostTradedExchangesComponent implements OnChanges {
   set countryFilter(countryName: string) {
     this._countryFilter = countryName;
     this.onCountryNameSearched.emit(this._countryFilter);
+  }
+
+  onSwitchPairClicked(currencyPair: string) {
+    this.onCurrencyPairSwitchClicked.emit(currencyPair);
   }
 
 }

@@ -33,8 +33,9 @@
               </span>
             </td>
             <td>{{ exchange.liveRate }}</td>
-            <td>
-              <img src="../../../assets/switch.png" alt="Switch Icon" width="32">
+            <td class="switch-icon">
+              <img src="../../../assets/switch.png" alt="Switch Icon" width="32"
+                (click)="onSwitchPairClicked(exchange.currencyPair)">
             </td>
           </tr>
         </ng-container>
@@ -46,7 +47,4 @@
       </tbody>
     </table>
   </div>
-</div>
-<div class="exchange-rate">
-  <button class="btn">Get Your Rate!</button>
 </div>

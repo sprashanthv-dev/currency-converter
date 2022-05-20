@@ -1,0 +1,7 @@
+<app-most-traded-exchanges [mostTradedExchanges]="mostTradedCurrencyPairsFiltered"
+  (onCountryNameSearched)="handleCountryNameSearch($event)"
+  (onCurrencyPairSwitchClicked)="handleCurrencyPairSwitch($event)">
+</app-most-traded-exchanges>
+<div class="exchange-rate">
+  <button class="btn" [routerLink]="['','get-your-rate']">Get Your Rate!</button>
+</div>
