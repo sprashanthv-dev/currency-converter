@@ -10,13 +10,15 @@ export class DataService {
   //TODO : Handle Exchange Rate on switch
   switchCurrencyPair(currencyExchangeInfo: MostTradedExchanges): MostTradedExchanges {
 
-    let { currencyPair, fullForm, srcImageUrl, destImageUrl, liveRate } = currencyExchangeInfo;
+    let { currencyPair, fullForm, srcImageUrl, destImageUrl, liveRate, srcDestRate, destSrcRate } = currencyExchangeInfo;
 
     [srcImageUrl, destImageUrl] = [destImageUrl, srcImageUrl];
 
     return {
       currencyPair: this.splitAndSwitch(currencyPair, "-"),
       fullForm: this.splitAndSwitch(fullForm, "-"),
+      srcDestRate,
+      destSrcRate,
       liveRate,
       srcImageUrl,
       destImageUrl

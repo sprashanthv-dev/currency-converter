@@ -22,4 +22,8 @@ export class UtilService {
     return Object.keys(value).length > 0;
   }
 
+  isObjectNotNullOrUndefinedAndNotEmpty(value: any): boolean {
+    return !this.isNullOrUndefined(value)
+      && this.isObjectNotEmpty(value);
+  }
 }

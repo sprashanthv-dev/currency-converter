@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { mostTradedPairs } from '../../constants/most-traded-pairs';
 import { MostTradedExchanges } from '../../interfaces/most-traded-exchanges';
+
 import { DataService } from '../../services/data.service';
 import { UtilService } from '../../services/util.service';
 
@@ -44,8 +45,7 @@ export class HomeComponent implements OnInit {
     if (exchangePairIndex !== -1) {
       let exchangePairInfo = this.mostTradedCurrencyPairsFiltered[exchangePairIndex];
 
-      let isValidObject = !this.utilSrv.isNullOrUndefined(exchangePairInfo)
-        && this.utilSrv.isObjectNotEmpty(exchangePairInfo);
+      let isValidObject = this.utilSrv.isObjectNotNullOrUndefinedAndNotEmpty(exchangePairInfo);
 
       if (isValidObject) {
         let modifiedCurrencyPairInfo = this.dataSrv.switchCurrencyPair(exchangePairInfo);
