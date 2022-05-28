@@ -86,7 +86,6 @@ export class HttpService {
 
     for (let queryParam in queryParams) {
       let queryParamValue = queryParams[queryParam];
-
       params = params.append(queryParam, queryParamValue);
     }
 

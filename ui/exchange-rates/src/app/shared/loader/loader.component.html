@@ -1,0 +1,7 @@
+<div *ngIf="loaderType === 'non-master'" style="position: relative;">
+  <ngx-ui-loader [loaderId]="loaderName"></ngx-ui-loader>
+</div>
+
+<ng-container *ngIf="loaderType === 'master'">
+  <ngx-ui-loader></ngx-ui-loader>
+</ng-container>

@@ -5,6 +5,8 @@ import { MostTradedExchanges } from '../../interfaces/most-traded-exchanges';
 
 import { DataService } from '../../services/data.service';
 import { UtilService } from '../../services/util.service';
+import { ApiResponseFormatterService } from '../../services/api-response-formatter.service';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-home',
@@ -16,13 +18,31 @@ export class HomeComponent implements OnInit {
   mostTradedCurrencyPairs: MostTradedExchanges[] = [];
   mostTradedCurrencyPairsFiltered: MostTradedExchanges[] = [];
 
+  currencyPairNamesList: string[] = [];
+
   constructor(
+    private apiSrv: ApiService,
+    private apiResponseFormatterSrv: ApiResponseFormatterService,
     private utilSrv: UtilService,
     private dataSrv: DataService) { }
 
   ngOnInit(): void {
-    this.mostTradedCurrencyPairs = mostTradedPairs;
-    this.mostTradedCurrencyPairsFiltered = this.mostTradedCurrencyPairs;
+    this.currencyPairNamesList = mostTradedPairs.map((pair: MostTradedExchanges) => pair.currencyPair);
+    // this.fetchLiveExchangeRates();
+  }
+
+  async fetchLiveExchangeRates() {
+
+    this.apiSrv
+      .fetchLiveExchangeRates(this.currencyPairNamesList)
+      .then((liveExchangeRates: any) => {
+        this.mostTradedCurrencyPairs = this.apiResponseFormatterSrv.formatLiveExchangeRatesResponse(liveExchangeRates);
+        console.log(this.mostTradedCurrencyPairs);
+        this.mostTradedCurrencyPairsFiltered = this.mostTradedCurrencyPairs;
+      })
+      .catch((error: Error) => {
+        console.log('Error ', error.name, " ", error.message);
+      });
   }
 
   handleCountryNameSearch(searchTerm: string) {

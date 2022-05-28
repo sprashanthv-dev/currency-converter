@@ -6,8 +6,12 @@ import { Injectable } from "@angular/core";
 
 export class UtilService {
 
-  isStringEmpty(value: string): boolean {
+  isStringEmpty(value: string | undefined): boolean {
     return value === "";
+  }
+
+  areStringsEmpty(values: string[]): boolean {
+    return values.every((value: string) => this.isStringEmpty(value));
   }
 
   isArrayEmpty(value: any[]): boolean {
@@ -25,5 +29,19 @@ export class UtilService {
   isObjectNotNullOrUndefinedAndNotEmpty(value: any): boolean {
     return !this.isNullOrUndefined(value)
       && this.isObjectNotEmpty(value);
+  }
+
+  isStringNotNullOrUndefinedAndNotEmpty(value: string | undefined): boolean {
+    return !this.isNullOrUndefined(value)
+      && !this.isStringEmpty(value);
+  }
+
+  replaceString(inputString: string, searchString: string, replacementString: string): string {
+
+    let result = !this.areStringsEmpty([searchString, replacementString])
+      ? inputString.replace(searchString, replacementString)
+      : inputString;
+
+    return result;
   }
 }
