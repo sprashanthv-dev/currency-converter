@@ -1,12 +1,19 @@
-.exchange-rate {
+.footer-banner {
   display: flex;
-  justify-content: center;
-  width: 100%;
+  justify-content: end;
+  width: 80%;
+  margin: 20px auto;
 }
 
-.exchange-rate button {
+.footer-banner p {
+  margin: 15px auto;
+  color: var(--primary);
+  font-size: 20px;
+}
+
+.footer-banner button {
   font-size: 25px;
-  margin: 0px auto 20px auto;
+  margin: 0px auto;
   width: 20%;
   background-color: var(--primary);
   color: var(--grey);

@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 import { mostTradedPairs } from '../../constants/most-traded-pairs';
+import { EXCHANGE_RATES_CNST } from '../../constants/proj.cnst';
+
 import { MostTradedExchanges } from '../../interfaces/most-traded-exchanges';
 
 import { DataService } from '../../services/data.service';
 import { UtilService } from '../../services/util.service';
 import { ApiResponseFormatterService } from '../../services/api-response-formatter.service';
 import { ApiService } from '../../services/api.service';
+import { AppStateService } from '../../services/app-state.service';
 
 @Component({
   selector: 'app-home',
@@ -19,12 +22,14 @@ export class HomeComponent implements OnInit {
   mostTradedCurrencyPairsFiltered: MostTradedExchanges[] = [];
 
   currencyPairNamesList: string[] = [];
+  loaderConfig = EXCHANGE_RATES_CNST.LOADER_OPTIONS;
 
   constructor(
     private apiSrv: ApiService,
     private apiResponseFormatterSrv: ApiResponseFormatterService,
     private utilSrv: UtilService,
-    private dataSrv: DataService) { }
+    private dataSrv: DataService,
+    private appStateSrv: AppStateService) { }
 
   ngOnInit(): void {
     this.currencyPairNamesList = mostTradedPairs.map((pair: MostTradedExchanges) => pair.currencyPair);
@@ -37,11 +42,15 @@ export class HomeComponent implements OnInit {
       .fetchLiveExchangeRates(this.currencyPairNamesList)
       .then((liveExchangeRates: any) => {
         this.mostTradedCurrencyPairs = this.apiResponseFormatterSrv.formatLiveExchangeRatesResponse(liveExchangeRates);
-        console.log(this.mostTradedCurrencyPairs);
         this.mostTradedCurrencyPairsFiltered = this.mostTradedCurrencyPairs;
+
+        this.appStateSrv.setLoaderInfo(EXCHANGE_RATES_CNST.STOP_MASTER_LOADER_CONFIG);
       })
       .catch((error: Error) => {
         console.log('Error ', error.name, " ", error.message);
+      })
+      .finally(() => {
+        this.appStateSrv.setLoaderInfo(EXCHANGE_RATES_CNST.STOP_MASTER_LOADER_CONFIG);
       });
   }
 

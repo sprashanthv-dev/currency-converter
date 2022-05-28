@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
-import { Subject } from "rxjs";
+import { BehaviorSubject } from "rxjs";
+import { EXCHANGE_RATES_CNST } from "../constants/proj.cnst";
 import { LoaderConfig } from "../interfaces/loader-config";
 
 @Injectable({
@@ -9,7 +10,7 @@ import { LoaderConfig } from "../interfaces/loader-config";
 export class AppStateService {
 
   loaderInfo: LoaderConfig | undefined;
-  loaderRef = new Subject<LoaderConfig>();
+  loaderRef = new BehaviorSubject<LoaderConfig>(EXCHANGE_RATES_CNST.STOP_MASTER_LOADER_CONFIG);
 
   setLoaderInfo(loaderConfig: LoaderConfig) {
     this.loaderInfo = loaderConfig;

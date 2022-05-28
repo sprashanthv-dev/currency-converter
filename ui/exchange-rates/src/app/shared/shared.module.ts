@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { LoaderComponent } from './loader/loader.component';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
+
+import { ngxUiLoaderConfig } from '../constants/ngx-ui-loader.config';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -10,7 +12,7 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
   ],
   imports: [
     CommonModule,
-    NgxUiLoaderModule
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig)
   ],
   exports: [
     LoaderComponent

@@ -1,4 +1,4 @@
-<h3 class="table-info-header"><em>Top 10 Traded Currency Pairs Worldwide</em></h3>
+<h3 class="table-info-header"><em>Top 10 Traded Currency Pairs Worldwide*</em></h3>
 <div class="card">
   <div class="card-body">
     <form>
@@ -33,7 +33,7 @@
                 <img [src]=exchange.destImageUrl alt="India Flag">
               </span>
             </td>
-            <td>{{ exchange.liveRate }}</td>
+            <td>{{ exchange.liveRate | number: '1.1-3'}}</td>
             <td class="switch-icon">
               <img src="../../../assets/switch.png" alt="Switch Icon" width="32"
                 (click)="onSwitchPairClicked(exchange.currencyPair)">
