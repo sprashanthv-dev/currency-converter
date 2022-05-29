@@ -8,7 +8,7 @@
 .footer-banner p {
   margin: 15px auto;
   color: var(--primary);
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .footer-banner button {
@@ -17,4 +17,33 @@
   width: 20%;
   background-color: var(--primary);
   color: var(--grey);
+}
+
+/** Media Queries **/
+@media screen and (max-width: 1246px) {
+  .footer-banner {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-banner p {
+    margin: 5px 0px 10px 0px;
+  }
+
+  .footer-banner button {
+    font-size: 20px;
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .footer-banner p {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .footer-banner button {
+    font-size: 18px;
+    width: 50%;
+  }
 }

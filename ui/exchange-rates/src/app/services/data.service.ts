@@ -30,7 +30,7 @@ export class DataService {
 
     let splitValueOptions: SplitValueOptions = {
       splitDelimiter: DELIMITER_SYMBOLS.HYPHEN,
-      joinDelimiter: DELIMITER_SYMBOLS.COMMA
+      joinDelimiter: DELIMITER_SYMBOLS.HYPHEN
     }
 
     return {
@@ -38,7 +38,7 @@ export class DataService {
       fullForm: this.splitAndSwitch(fullForm, splitValueOptions),
       srcDestRate,
       destSrcRate,
-      liveRate,
+      liveRate: srcDestRate,
       srcImageUrl,
       destImageUrl
     };

@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.currencyPairNamesList = mostTradedPairs.map((pair: MostTradedExchanges) => pair.currencyPair);
-    // this.fetchLiveExchangeRates();
+    this.fetchLiveExchangeRates();
   }
 
   async fetchLiveExchangeRates() {

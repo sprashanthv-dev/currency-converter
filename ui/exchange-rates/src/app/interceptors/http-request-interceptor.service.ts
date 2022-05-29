@@ -11,8 +11,6 @@ export class HttpRequestInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    console.log("Inside interceptor ...");
-
     let modifiedParams = req.params;
 
     modifiedParams = modifiedParams.append('apiKey', API_SECRETS.API_KEY);
