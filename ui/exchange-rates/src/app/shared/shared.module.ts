@@ -5,17 +5,20 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
 
 import { ngxUiLoaderConfig } from '../constants/ngx-ui-loader.config';
 import { LoaderComponent } from './loader/loader.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
-    LoaderComponent
+    LoaderComponent,
+    ErrorPageComponent
   ],
   imports: [
     CommonModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig)
   ],
   exports: [
-    LoaderComponent
+    LoaderComponent,
+    ErrorPageComponent
   ]
 })
 export class SharedModule { }

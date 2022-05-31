@@ -24,6 +24,9 @@ export class HomeComponent implements OnInit {
   currencyPairNamesList: string[] = [];
   loaderConfig = EXCHANGE_RATES_CNST.LOADER_OPTIONS;
 
+  errorCode: number = 500;
+  isMostTradedCurrencyPairsNotLoaded: boolean = true;
+
   constructor(
     private apiSrv: ApiService,
     private apiResponseFormatterSrv: ApiResponseFormatterService,
@@ -45,9 +48,11 @@ export class HomeComponent implements OnInit {
         this.mostTradedCurrencyPairsFiltered = this.mostTradedCurrencyPairs;
 
         this.appStateSrv.setLoaderInfo(EXCHANGE_RATES_CNST.STOP_MASTER_LOADER_CONFIG);
+        this.isMostTradedCurrencyPairsNotLoaded = false;
       })
       .catch((error: Error) => {
         console.log('Error ', error.name, " ", error.message);
+        this.isMostTradedCurrencyPairsNotLoaded = true;
       })
       .finally(() => {
         this.appStateSrv.setLoaderInfo(EXCHANGE_RATES_CNST.STOP_MASTER_LOADER_CONFIG);
