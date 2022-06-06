@@ -1,0 +1,51 @@
+<h3 class="table-info-header"><em>Top 10 Traded Currency Pairs Worldwide*</em></h3>
+<div class="card">
+  <div class="card-body">
+    <form>
+      <div class="form-header-row row col-xs-12">
+        <label for="table-search" class="col-xs-3 col-sm-auto col-form-label">By Country:
+        </label>
+        <div class="col-xs-3 col-sm-auto table-search-bar">
+          <input type="text" id="table-search" class="form-control" name="country_name" [(ngModel)]="countryFilter">
+        </div>
+      </div>
+    </form>
+    <table class="table table-striped table-responsive">
+      <thead>
+        <th scope="col">#</th>
+        <th scope="col">Currency Pair</th>
+        <th scope="col">Full Form</th>
+        <th scope="col">Live Exchange Rate</th>
+        <th scope="col">Switch Pair</th>
+      </thead>
+      <tbody>
+
+        <ng-container *ngIf="!areTableRecordsEmpty; else empty_table">
+          <tr *ngFor="let exchange of mostTradedExchanges; let ind = index">
+            <th scope="row">{{ ind + 1 }}</th>
+            <td>{{ exchange.currencyPair }}</td>
+            <td>
+              <span class="flag">
+                <img [src]=exchange.srcImageUrl alt="United States Flag">
+              </span>
+              <span class="full-form">{{ exchange.fullForm }}</span>
+              <span class="flag">
+                <img [src]=exchange.destImageUrl alt="India Flag">
+              </span>
+            </td>
+            <td>{{ exchange.liveRate | number: '1.1-3'}}</td>
+            <td class="switch-icon">
+              <img src="../../../assets/switch.png" alt="Switch Icon" width="32"
+                (click)="onSwitchPairClicked(exchange.currencyPair)">
+            </td>
+          </tr>
+        </ng-container>
+
+        <ng-template #empty_table>
+          <td colspan="6" class="no-results">No results found</td>
+        </ng-template>
+
+      </tbody>
+    </table>
+  </div>
+</div>

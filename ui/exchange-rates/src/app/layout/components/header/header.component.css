@@ -1,0 +1,28 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+  background: var(--grey);
+}
+
+header .forex-icon {
+  margin: 10px;
+}
+
+header .title {
+  margin: 15px auto;
+  letter-spacing: 0.1rem;
+  font-size: 30px;
+  color: var(--primary);
+}
+
+/** Media Queries */
+@media screen and (max-width: 500px) {
+  header .title {
+    font-size: 25px;
+  }
+
+  .forex-icon img {
+    width: 40px;
+  }
+}

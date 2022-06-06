@@ -1,0 +1,11 @@
+footer {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  background: var(--grey);
+}
+
+footer .footer-text {
+  font-size: 18px;
+  margin: 5px auto;
+}
