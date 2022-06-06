@@ -31,3 +31,52 @@
   text-align: justify;
   margin: 25% auto;
 }
+
+/* Media Queries */
+@media screen and (max-width: 1140px) {
+  .error-page {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .message-container {
+    height: 75px;
+    margin: 10px 20px;
+  }
+
+  .message-container p {
+    margin: 0;
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .image-container {
+    width: 500px;
+  }
+
+  .image-container img {
+    width: 450px;
+    height: 375px;
+  }
+
+  .message-container p {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .image-container {
+    width: 300px;
+  }
+
+  .image-container img {
+    width: 250px;
+    height: 200px;
+  }
+
+  .message-container p {
+    font-size: 16px;
+  }
+}
