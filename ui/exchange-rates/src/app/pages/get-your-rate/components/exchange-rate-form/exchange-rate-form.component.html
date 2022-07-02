@@ -1,0 +1,36 @@
+<div class="card my-3">
+  <div class="card-body">
+    <form class="row g-5 justify-content-center">
+      <div class="col-lg-5 col-md-5 source">
+        <label for="source_currency">Currency I have:</label>
+        <ng-select class="mb-2"></ng-select>
+        <label for="source_amt">Amount:</label>
+        <div class="input-group">
+          <span class="input-group-text">&#8377;</span>
+          <input type="text" class="form-control" placeholder="Enter amount" aria-label="source amount">
+        </div>
+      </div>
+      <div class="col-lg-1 col-md-1 d-flex align-items-center justify-content-center">
+        <img src=" ../../../../../assets/exchange.png" alt="Currency Exchange Icon" width="32">
+      </div>
+      <div class="col-lg-5 col-md-5 dest">
+        <label for="dest_currency">Currency I want:</label>
+        <ng-select class="mb-2"></ng-select>
+        <label for="dest_amt">Amount:</label>
+        <div class="input-group">
+          <span class="input-group-text">$</span>
+          <input type="text" class="form-control" placeholder="Enter amount" aria-label="dest amount">
+        </div>
+      </div>
+    </form>
+    <div class="get-rate mt-4 mx-auto">
+      <button type="button" class="btn w-100"><em>Do your Magic!</em></button>
+    </div>
+  </div>
+</div>
+
+<!-- Flag icons usage-->
+<!-- <p>Hello</p>
+<span class="fi fi-gr"></span>
+<p>Square</p>
+<span class="fi fi-gr fis"></span> -->

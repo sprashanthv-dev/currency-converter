@@ -1,0 +1,14 @@
+h3 u {
+  color: var(--primary);
+}
+
+.card {
+  background-color: var(--primary);
+}
+
+@media screen and (max-width: 768px) {
+  ul.nav.nav-pills {
+    flex-direction: column;
+    align-items: center;
+  }
+}

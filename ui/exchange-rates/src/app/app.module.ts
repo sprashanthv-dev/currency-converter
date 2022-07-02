@@ -22,7 +22,7 @@ import { PageModule } from './pages/page.module';
     AppRoutingModule,
     NgbModule,
     LayoutModule,
-    PageModule
+    PageModule,
   ],
   providers: [
     {

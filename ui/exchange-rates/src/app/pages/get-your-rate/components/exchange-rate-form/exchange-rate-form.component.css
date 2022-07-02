@@ -1,0 +1,50 @@
+.card {
+  background-color: var(--primary);
+}
+
+form > div.source,
+form > div.dest {
+  color: var(--grey);
+  line-height: 30px;
+}
+
+form > div > img {
+  filter: invert(1);
+}
+
+form > div > img:hover {
+  cursor: pointer;
+}
+
+div.get-rate {
+  width: 250px;
+  color: #000000;
+  background-color: var(--grey);
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+div.get-rate button {
+  font-size: 1.2rem;
+}
+
+div.get-rate button:hover {
+  animation: color-change 2s linear 0.1s;
+}
+
+@keyframes color-change {
+  0% {
+    background-color: var(--grey);
+  }
+  100% {
+    background-color: var(--primary);
+    color: var(--grey);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  form > div.source,
+  form > div.dest {
+    text-align: center;
+  }
+}

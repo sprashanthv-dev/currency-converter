@@ -1,0 +1,21 @@
+li.nav-item {
+  font-size: 1.2rem;
+}
+
+.nav-link.active {
+  color: #000000;
+  background-color: var(--grey);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  li.nav-item {
+    margin: 0.25rem 0px;
+  }
+}
+
+@media screen and (max-width: 574px) {
+  li.nav-item {
+    font-size: 0.9rem;
+  }
+}

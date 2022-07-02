@@ -9,6 +9,7 @@ import { PageRoutingRoutingModule } from './page-routing.module';
 import { GetYourRateComponent } from './get-your-rate/get-your-rate.component';
 import { HomeComponent } from './home/home.component';
 import { MostTradedExchangesComponent } from './most-traded-exchanges/most-traded-exchanges.component';
+import { GetYourRateModule } from './get-your-rate/get-your-rate.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MostTradedExchangesComponent } from './most-traded-exchanges/most-trade
     CommonModule,
     SharedModule,
     FormsModule,
+    GetYourRateModule,
     PageRoutingRoutingModule
   ],
   exports: [
