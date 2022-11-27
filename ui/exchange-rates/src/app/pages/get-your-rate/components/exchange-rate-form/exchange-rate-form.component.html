@@ -18,7 +18,7 @@
         </ng-select>
         <label for="source_amt">Amount:</label>
         <div class="input-group">
-          <span class="input-group-text">&#8377;</span>
+          <span class="input-group-text" *ngIf="sourceCurrency">{{ sourceCurrencySymbol }}</span>
           <input type="text" class="form-control" placeholder="Enter amount" aria-label="source amount">
         </div>
       </div>
@@ -41,7 +41,7 @@
         </ng-select>
         <label for="dest_amt">Amount:</label>
         <div class="input-group">
-          <span class="input-group-text">$</span>
+          <span class="input-group-text" *ngIf="destCurrency"> {{ destCurrencySymbol }} </span>
           <input type="text" class="form-control" placeholder="Enter amount" aria-label="dest amount">
         </div>
       </div>

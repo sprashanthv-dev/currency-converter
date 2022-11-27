@@ -87,4 +87,20 @@ export class DataService {
       return "";
     }
   }
+
+  handleCurrencySymbolsOnSelection(
+    currencyId : string | undefined | null, 
+    currencyInfo : CountryInfo[]) {
+
+    let symbol = null;
+
+    if (!this.utilSrv.isNullOrUndefined(currencyId)) {
+      let currencyItem = currencyInfo.filter((item : CountryInfo) => item.id === currencyId)[0];
+      let { currencySymbol } = currencyItem;
+      
+      symbol = currencySymbol;
+    }
+
+    return symbol;
+  }
 }
