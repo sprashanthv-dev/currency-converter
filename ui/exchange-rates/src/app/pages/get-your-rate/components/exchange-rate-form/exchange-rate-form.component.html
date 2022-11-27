@@ -3,7 +3,19 @@
     <form class="row g-5 justify-content-center">
       <div class="col-lg-5 col-md-5 source">
         <label for="source_currency">Currency I have:</label>
-        <ng-select class="mb-2"></ng-select>
+        <ng-select class="mb-2" 
+          [items]="countryInfo" 
+          [(ngModel)]="sourceCurrency" 
+          bindLabel="displayName"
+          bindValue="id" 
+          name="source_currency" 
+          placeholder="Select Source Currency"
+          (change)="onCurrencySelected('source')">
+          <ng-template ng-label-tmp let-item="item">
+            <img height="11" width="16" [src]="item.flagSourceUrl" />
+            {{item.displayName}}
+          </ng-template>
+        </ng-select>
         <label for="source_amt">Amount:</label>
         <div class="input-group">
           <span class="input-group-text">&#8377;</span>
@@ -15,7 +27,18 @@
       </div>
       <div class="col-lg-5 col-md-5 dest">
         <label for="dest_currency">Currency I want:</label>
-        <ng-select class="mb-2"></ng-select>
+        <ng-select class="mb-2" 
+          [items]="countryInfo" 
+          [(ngModel)]="destCurrency" 
+          bindLabel="displayName" bindValue="id"
+          name="dest_currency" 
+          placeholder="Select Destination Currency" 
+          (change)="onCurrencySelected('dest')">
+          <ng-template ng-label-tmp let-item="item">
+            <img height="11" width="16" [src]="item.flagSourceUrl" />
+            {{item.displayName}}
+          </ng-template>
+        </ng-select>
         <label for="dest_amt">Amount:</label>
         <div class="input-group">
           <span class="input-group-text">$</span>

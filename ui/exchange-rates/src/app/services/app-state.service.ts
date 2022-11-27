@@ -10,7 +10,9 @@ import { LoaderConfig } from "../interfaces/loader-config";
 export class AppStateService {
 
   loaderInfo: LoaderConfig | undefined;
-  loaderRef = new BehaviorSubject<LoaderConfig>(EXCHANGE_RATES_CNST.START_MASTER_LOADER_CONFIG);
+  // loaderRef = new BehaviorSubject<LoaderConfig>(EXCHANGE_RATES_CNST.START_MASTER_LOADER_CONFIG);
+  loaderRef = new BehaviorSubject<LoaderConfig>(EXCHANGE_RATES_CNST.STOP_MASTER_LOADER_CONFIG);
+
 
   setLoaderInfo(loaderConfig: LoaderConfig) {
     this.loaderInfo = loaderConfig;

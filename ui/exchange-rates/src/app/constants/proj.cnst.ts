@@ -1,3 +1,4 @@
+import { CountryFlagConfig } from "../interfaces/country-flag-config"
 import { ErrorPageConfig } from "../interfaces/error-page-config"
 import { LoaderConfig } from "../interfaces/loader-config"
 
@@ -15,7 +16,8 @@ const delimiterSymbols = {
   UNDERSCORE: "_",
   HYPHEN: "-",
   COMMA: ",",
-  BLANK_SPACE: ""
+  BLANK_SPACE: "",
+  DOT: "."
 }
 
 const loaderOptions = {
@@ -63,6 +65,16 @@ const errorPageConfig: ErrorPageConfig[] = [
   }
 ]
 
+const countryFlagConfig: CountryFlagConfig = {
+  flagBasePath: './../../../../assets/flags',
+  imageFormat: 'png'
+}
+
+const currencyDropDownNames = {
+  SOURCE_CURRENCY: 'source',
+  DEST_CURRENCY: 'dest'
+}
+
 export const EXCHANGE_RATES_CNST = {
   API_MAPPING: apiMapping,
   API_ERROR_MESSAGES: apiErrorMessages,
@@ -71,5 +83,7 @@ export const EXCHANGE_RATES_CNST = {
   STOP_MASTER_LOADER_CONFIG: stopMasterLoaderConfig,
   ERROR_PAGE_CONFIGS: errorPageConfig,
   BASE_URL: 'https://free.currconv.com/api/v7',
+  FLAG_CONFIG: countryFlagConfig,
+  CURRENCY_DROPDOWN_NAMES: currencyDropDownNames,
   DELIMITER_SYMBOLS: delimiterSymbols
 }

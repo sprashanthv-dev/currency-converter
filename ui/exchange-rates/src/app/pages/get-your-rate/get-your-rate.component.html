@@ -11,5 +11,7 @@
       </ul>
     </div>
   </div>
-  <app-exchange-rate-form></app-exchange-rate-form>
+  <app-exchange-rate-form 
+    [countryInfo]="countryInfoFiltered"
+    (selectedCurrencyInfo)="handleCurrencySelection($event)"></app-exchange-rate-form>
 </div>

@@ -5,4 +5,6 @@ export interface CountryInfo {
   currencySymbol: string;
   id: string;
   name: string;
+  flagSourceUrl: string;
+  displayName: string;
 }

@@ -2,7 +2,9 @@ import { Injectable } from "@angular/core";
 
 import { mostTradedPairs } from "../constants/most-traded-pairs";
 import { EXCHANGE_RATES_CNST } from "../constants/proj.cnst";
+import { CountryInfo } from "../interfaces/country-info";
 import { MostTradedExchanges } from "../interfaces/most-traded-exchanges";
+import { DataService } from "./data.service";
 import { UtilService } from "./util.service";
 
 @Injectable({
@@ -11,7 +13,9 @@ import { UtilService } from "./util.service";
 
 export class ApiResponseFormatterService {
 
-  constructor(private utilSrv: UtilService) { }
+  constructor(
+    private utilSrv: UtilService,
+    private dataSrv: DataService) { }
 
   formatLiveExchangeRatesResponse(response: any[]): MostTradedExchanges[] {
 
@@ -42,6 +46,29 @@ export class ApiResponseFormatterService {
         }
       }
     })
+
     return liveExchangeRatesList;
+  }
+
+  formatCountriesListResponse(response: any): CountryInfo[] {
+    let countriesInfo: CountryInfo[] = [];
+
+    if (this.utilSrv.isObjectNotNullOrUndefinedAndNotEmpty(response)) {
+      let countryISOCodes = Object.keys(response);
+
+      if (!this.utilSrv.isArrayEmpty(countryISOCodes)) {
+
+        for (let countryISOCode of countryISOCodes) {
+          let countryInfo = response[countryISOCode];
+
+          if (this.utilSrv.isObjectNotNullOrUndefinedAndNotEmpty(countryInfo)) {
+            let finalCountryInfo = this.dataSrv.buildCountryInfoObject(countryInfo);
+            countriesInfo.push(finalCountryInfo);
+          }
+        }
+      }
+    }
+
+    return countriesInfo;
   }
 }

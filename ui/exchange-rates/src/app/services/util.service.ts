@@ -10,6 +10,10 @@ export class UtilService {
     return value === "";
   }
 
+  isStringUndefined(value : string | null | undefined) : boolean {
+    return value === undefined;
+  }
+
   areStringsEmpty(values: string[]): boolean {
     return values.every((value: string) => this.isStringEmpty(value));
   }
