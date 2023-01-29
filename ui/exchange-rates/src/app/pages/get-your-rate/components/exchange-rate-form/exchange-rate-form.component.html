@@ -3,23 +3,28 @@
     <form class="row g-5 justify-content-center">
       <div class="col-lg-5 col-md-5 source">
         <label for="source_currency">Currency I have:</label>
-        <ng-select class="mb-2" 
-          [items]="countryInfo" 
-          [(ngModel)]="sourceCurrency" 
-          bindLabel="displayName"
-          bindValue="id" 
-          name="source_currency" 
-          placeholder="Select Source Currency"
-          (change)="onCurrencySelected('source')">
+        <ng-select class="mb-2"
+                   [items]="countryInfo"
+                   [(ngModel)]="sourceCurrencyAbbr"
+                   bindLabel="displayName"
+                   bindValue="id"
+                   name="source_currency"
+                   id="source_currency"
+                   placeholder="Select Source Currency"
+                   (change)="onCurrencySelected('source')">
           <ng-template ng-label-tmp let-item="item">
-            <img height="11" width="16" [src]="item.flagSourceUrl" />
+            <img height="11" width="16" [src]="item.flagSourceUrl"/>
             {{item.displayName}}
           </ng-template>
         </ng-select>
         <label for="source_amt">Amount:</label>
         <div class="input-group">
-          <span class="input-group-text" *ngIf="sourceCurrency">{{ sourceCurrencySymbol }}</span>
-          <input type="text" class="form-control" placeholder="Enter amount" aria-label="source amount">
+          <span class="input-group-text" *ngIf="sourceCurrencyAbbr">{{ sourceCurrencySymbol }}</span>
+          <input type="text"
+                 class="form-control"
+                 placeholder="Enter amount"
+                 aria-label="source amount"
+                 id="source_amt">
         </div>
       </div>
       <div class="col-lg-1 col-md-1 d-flex align-items-center justify-content-center">
@@ -27,22 +32,28 @@
       </div>
       <div class="col-lg-5 col-md-5 dest">
         <label for="dest_currency">Currency I want:</label>
-        <ng-select class="mb-2" 
-          [items]="countryInfo" 
-          [(ngModel)]="destCurrency" 
-          bindLabel="displayName" bindValue="id"
-          name="dest_currency" 
-          placeholder="Select Destination Currency" 
-          (change)="onCurrencySelected('dest')">
+        <ng-select class="mb-2"
+                   [items]="countryInfo"
+                   [(ngModel)]="destCurrencyAbbr"
+                   bindLabel="displayName"
+                   bindValue="id"
+                   name="dest_currency"
+                   id="dest_currency"
+                   placeholder="Select Destination Currency"
+                   (change)="onCurrencySelected('dest')">
           <ng-template ng-label-tmp let-item="item">
-            <img height="11" width="16" [src]="item.flagSourceUrl" />
+            <img height="11" width="16" [src]="item.flagSourceUrl"/>
             {{item.displayName}}
           </ng-template>
         </ng-select>
         <label for="dest_amt">Amount:</label>
         <div class="input-group">
-          <span class="input-group-text" *ngIf="destCurrency"> {{ destCurrencySymbol }} </span>
-          <input type="text" class="form-control" placeholder="Enter amount" aria-label="dest amount">
+          <span class="input-group-text" *ngIf="destCurrencyAbbr"> {{ destCurrencySymbol }} </span>
+          <input type="text"
+                 class="form-control"
+                 placeholder="Enter amount"
+                 aria-label="dest amount"
+                 id="dest_amt">
         </div>
       </div>
     </form>

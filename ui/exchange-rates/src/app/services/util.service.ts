@@ -1,4 +1,5 @@
-import { Injectable } from "@angular/core";
+import {Injectable} from "@angular/core";
+import {EXCHANGE_RATES_CNST} from "../constants/proj.cnst";
 
 @Injectable({
   providedIn: 'root'
@@ -6,11 +7,13 @@ import { Injectable } from "@angular/core";
 
 export class UtilService {
 
+  delimiterSymbols = EXCHANGE_RATES_CNST.DELIMITER_SYMBOLS;
+
   isStringEmpty(value: string | undefined): boolean {
     return value === "";
   }
 
-  isStringUndefined(value : string | null | undefined) : boolean {
+  isStringUndefined(value: string | null | undefined): boolean {
     return value === undefined;
   }
 
@@ -47,5 +50,34 @@ export class UtilService {
       : inputString;
 
     return result;
+  }
+
+  splitString(str: string | undefined, delimiter: string) {
+
+    if (!this.isStringNotNullOrUndefinedAndNotEmpty(str) ||
+      !this.isStringNotNullOrUndefinedAndNotEmpty(delimiter)) {
+      return str;
+    } else {
+      // @ts-ignore
+      return str.split(delimiter);
+    }
+  }
+
+  capitalizeFirstLetter(str: string | undefined) {
+
+    let modifiedStr = "";
+
+    if (!this.isStringNotNullOrUndefinedAndNotEmpty(str)) {
+      return str;
+    } else {
+      let parts = this.splitString(str, this.delimiterSymbols.SINGLE_SPACE);
+
+      // @ts-ignore
+      for (let part of parts) {
+        modifiedStr += `${part.substring(0, 1).toUpperCase()}${part.slice(1)}${this.delimiterSymbols.SINGLE_SPACE}`;
+      }
+    }
+
+    return modifiedStr;
   }
 }

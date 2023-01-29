@@ -17,6 +17,7 @@ const delimiterSymbols = {
   HYPHEN: "-",
   COMMA: ",",
   BLANK_SPACE: "",
+  SINGLE_SPACE : " ",
   DOT: "."
 }
 
