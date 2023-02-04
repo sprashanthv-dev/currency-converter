@@ -11,14 +11,6 @@
   font-size: 18px;
 }
 
-.footer-banner button {
-  font-size: 25px;
-  margin: 0px auto;
-  width: 20%;
-  background-color: var(--primary);
-  color: var(--grey);
-}
-
 /** Media Queries **/
 @media screen and (max-width: 1246px) {
   .footer-banner {
@@ -27,12 +19,7 @@
   }
 
   .footer-banner p {
-    margin: 5px 0px 10px 0px;
-  }
-
-  .footer-banner button {
-    font-size: 20px;
-    width: 30%;
+    margin: 5px 0 10px 0;
   }
 }
 
@@ -40,10 +27,5 @@
   .footer-banner p {
     font-size: 16px;
     text-align: center;
-  }
-
-  .footer-banner button {
-    font-size: 18px;
-    width: 50%;
   }
 }

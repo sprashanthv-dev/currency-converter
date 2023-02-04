@@ -13,6 +13,7 @@ export class MostTradedExchangesComponent implements OnChanges {
 
   @Output() onCountryNameSearched: EventEmitter<string> = new EventEmitter<string>();
   @Output() onCurrencyPairSwitchClicked: EventEmitter<string> = new EventEmitter<string>();
+  @Output() onGetRateClicked : EventEmitter<any> = new EventEmitter<any>();
 
   areTableRecordsEmpty: boolean = false;
 
@@ -35,6 +36,10 @@ export class MostTradedExchangesComponent implements OnChanges {
 
   onSwitchPairClicked(currencyPair: string) {
     this.onCurrencyPairSwitchClicked.emit(currencyPair);
+  }
+
+  handleRateClick() {
+    this.onGetRateClicked.emit();
   }
 
 }

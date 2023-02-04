@@ -2,10 +2,10 @@
 <app-error-page [errorCode]="errorCode" *ngIf="isMostTradedCurrencyPairsNotLoaded"></app-error-page>
 <app-most-traded-exchanges *ngIf="mostTradedCurrencyPairsFiltered.length"
   [mostTradedExchanges]="mostTradedCurrencyPairsFiltered" (onCountryNameSearched)="handleCountryNameSearch($event)"
-  (onCurrencyPairSwitchClicked)="handleCurrencyPairSwitch($event)">
+  (onCurrencyPairSwitchClicked)="handleCurrencyPairSwitch($event)"
+  (onGetRateClicked)="handleRateClick()">
 </app-most-traded-exchanges>
 
 <div class="footer-banner" *ngIf="!isMostTradedCurrencyPairsNotLoaded">
   <p>* - Exchange Rates shown are for 1 unit of each currency pair.</p>
-  <button class="btn" [routerLink]="['','get-your-rate']"><em>Get Your Rate!</em></button>
 </div>

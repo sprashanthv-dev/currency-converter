@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { mostTradedPairs } from '../../constants/most-traded-pairs';
-import { EXCHANGE_RATES_CNST } from '../../constants/proj.cnst';
+import {mostTradedPairs} from '../../constants/most-traded-pairs';
+import {EXCHANGE_RATES_CNST} from '../../constants/proj.cnst';
 
-import { MostTradedExchanges } from '../../interfaces/most-traded-exchanges';
+import {MostTradedExchanges} from '../../interfaces/most-traded-exchanges';
 
-import { DataService } from '../../services/data.service';
-import { UtilService } from '../../services/util.service';
-import { ApiResponseFormatterService } from '../../services/api-response-formatter.service';
-import { ApiService } from '../../services/api.service';
-import { AppStateService } from '../../services/app-state.service';
+import {DataService} from '../../services/data.service';
+import {UtilService} from '../../services/util.service';
+import {ApiResponseFormatterService} from '../../services/api-response-formatter.service';
+import {ApiService} from '../../services/api.service';
+import {AppStateService} from '../../services/app-state.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -28,6 +29,7 @@ export class HomeComponent implements OnInit {
   isMostTradedCurrencyPairsNotLoaded: boolean = true;
 
   constructor(
+    private router : Router,
     private apiSrv: ApiService,
     private apiResponseFormatterSrv: ApiResponseFormatterService,
     private utilSrv: UtilService,
@@ -86,10 +88,13 @@ export class HomeComponent implements OnInit {
       let isValidObject = this.utilSrv.isObjectNotNullOrUndefinedAndNotEmpty(exchangePairInfo);
 
       if (isValidObject) {
-        let modifiedCurrencyPairInfo = this.dataSrv.switchCurrencyPair(exchangePairInfo);
-        this.mostTradedCurrencyPairsFiltered[exchangePairIndex] = modifiedCurrencyPairInfo;
+        this.mostTradedCurrencyPairsFiltered[exchangePairIndex] = this.dataSrv.switchCurrencyPair(exchangePairInfo);
       }
     }
+  }
+
+  handleRateClick() {
+    this.router.navigate(['', 'get-your-rate']);
   }
 
 }
